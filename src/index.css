@@ -1,5 +1,14 @@
 :root {
     --background-color: #ffffff;
+    --secondary-background-color: #008CBA;
+    --hover-background-color: #f3f3f3;
+    --main-typography-color: rgba(20,27,36,0.7);
+
+    --border-input-color: #ccc;
+    --border-input-focus-color: #008CBA;
+
+    --border-color: #ebebeb;
+    --border-radius: 3px;
 }
 
 html,
@@ -7,6 +16,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: noto-sans, Arial, serif;
 }
 
 #root {

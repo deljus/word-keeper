@@ -1,0 +1,9 @@
+.container {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.groupsContainer{
+    margin: 20px 0;
+}

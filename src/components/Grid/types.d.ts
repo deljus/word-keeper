@@ -8,6 +8,7 @@ export interface GridProps {
 export interface ColProps {
   className?: string;
   children?: ReactNode;
+  span?: number;
 }
 
 export interface RowProps {

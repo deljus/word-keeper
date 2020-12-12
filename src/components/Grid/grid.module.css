@@ -1,3 +1,83 @@
 .grid {
     display: flex;
+    padding: 20px;
+    flex-direction: column;
 }
+
+.gridRow{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.gridCol {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.gridCol:last-child {
+    padding-right: 0;
+}
+
+.col1{
+     width: 8.33%;
+}
+
+.col2{
+     width: 16.67%;
+}
+
+.col3{
+     width: 25%;
+}
+
+.col4{
+     width: 33.33%;
+}
+
+.col5{
+     width: 41.67%;
+}
+
+.col6{
+     width: 50%;
+}
+
+.col7{
+     width: 58.33%;
+}
+
+.col8{
+     width: 66.67%;
+}
+
+.col9{
+     width: 75%;
+}
+
+.col10{
+     width: 83.33%;
+}
+
+.col11{
+     width: 91.67%;
+}
+
+.col12{
+     width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .gridCol {
+        width: auto;
+        padding: 10px;
+    }
+    .gridRow{
+        flex-direction: column;
+    }
+}
+

@@ -1,8 +1,33 @@
 .navBar {
     display: flex;
-    flex-direction: column;
-    z-index: 10;
+    flex-direction: row;
     max-width: 100%;
     background: var(--background-color);
     box-shadow: 0 2px 8px #f0f1f2;
 }
+
+.nav {
+    display: flex;
+    padding: 0 20px;
+}
+
+.navLink {
+    padding: 20px;
+    text-decoration: none;
+    color: var(--main-typography-color);
+    transition: all 200ms ease-in-out;
+}
+
+.navLink:hover {
+    background-color: var(--hover-background-color);
+}
+
+.navLinkSelected,
+.navLinkSelected:hover {
+    background-color: var(--secondary-background-color);
+    color: white;
+}
+
+
+
+

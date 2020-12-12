@@ -13,8 +13,18 @@ export const Nav: FC<NavProps> = ({ children, className }) => (
   <div className={cn(styles.nav, className)}>{children}</div>
 );
 
-export const NavLink: FC<NavLinkProps> = ({ children, className, to }) => (
-  <BaseNavLink className={cn(styles.navLink, className)} to={to}>
+export const NavLink: FC<NavLinkProps> = ({
+  children,
+  className,
+  to,
+  exact,
+}) => (
+  <BaseNavLink
+    className={cn(styles.navLink, className)}
+    to={to}
+    exact={exact}
+    activeClassName={styles.navLinkSelected}
+  >
     {children}
   </BaseNavLink>
 );

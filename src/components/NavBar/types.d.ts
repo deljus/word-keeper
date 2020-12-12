@@ -9,4 +9,5 @@ export type NavProps = NavBarProps;
 
 export interface NavLinkProps extends NavBarProps {
   to: string;
+  exact?: boolean;
 }

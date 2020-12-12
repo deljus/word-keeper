@@ -23,15 +23,15 @@
     "sourceType": "module"
   },
   "settings": {
-      "import/extensions": [".js", ".ts",".tsx", ".d.ts"],
-      "import/parsers": {
-        "@typescript-eslint/parser": [".ts",".tsx", ".d.ts"]
-      },
-      "import/resolver": {
-        "node": {
-          "extensions": [".js",".ts",".tsx", ".d.ts"]
-        }
+    "import/extensions": [".js", ".ts", ".tsx", ".d.ts"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx", ".d.ts"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".tsx", ".d.ts"]
       }
+    }
   },
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
@@ -55,12 +55,6 @@
         "tsx": "never",
         "mjs": "never"
       }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
     ]
   },
   "overrides": [
@@ -71,9 +65,5 @@
       }
     }
   ],
-  "plugins": [
-    "react",
-    "prettier",
-    "@typescript-eslint"
-  ]
+  "plugins": ["react", "prettier", "@typescript-eslint"]
 }
