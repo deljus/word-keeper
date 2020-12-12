@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { IndexPage } from './pages';
+import { Provider } from 'react-redux'
+import { IndexPage, FavoritePage } from './pages';
 import NavBar, { Nav, NavLink } from './components/NavBar';
 
 const App: FC = () => {
   const { t } = useTranslation();
 
   return (
+      <Provider>
     <BrowserRouter>
       <>
         <NavBar>
@@ -21,12 +23,16 @@ const App: FC = () => {
           </Nav>
         </NavBar>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <IndexPage />
+          </Route>
+          <Route exact to="/starred">
+            <FavoritePage />
           </Route>
         </Switch>
       </>
     </BrowserRouter>
+      </Provider>
   );
 };
 

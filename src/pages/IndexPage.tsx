@@ -3,30 +3,27 @@ import { useTranslation } from 'react-i18next';
 import SearchBarContainer from '../containers/SearchBar';
 import List, { ListItem } from '../components/List';
 import Grid, { Col, Row } from '../components/Grid';
+import Preloader, { generateItems } from '../components/Preloader';
 
-const ITEMS = [
-  {
-    id: 'Freedom',
-    word: 'Freedom',
-    partOfSpeech: 'verb',
-    description:
-      'the quality or state of being free: such as the quality or state of being free: such as the quality or state of being free: such as the quality or state of being free: such as',
-  },
-  {
-    id: 'Freedom1',
-    word: 'Freedom',
-    partOfSpeech: 'verb',
-    description:
-      'the quality or state of being free: such as the quality or state of being free: such as',
-  },
-  {
-    id: 'Freedom2',
-    word: 'Freedom',
-    partOfSpeech: 'verb',
-    description:
-      'the quality or state of being free: such as the quality or state of being free: such as',
-  },
-];
+const PRELOADER_ITEMS = generateItems(10);
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const createItems = ({ word, partOfSpeech, description, id }) => (
+  <ListItem
+    key={id}
+    title={word}
+    subTitle={partOfSpeech}
+    description={description}
+  />
+);
+
+const createPreloader = (n: number, index: number) => (
+  <ListItem
+    key={`preloader-${n}-${index}`}
+    description={<Preloader col={n} />}
+  />
+);
 
 const IndexPage: FC = () => {
   const { t } = useTranslation();
@@ -45,14 +42,9 @@ const IndexPage: FC = () => {
         </Col>
         <Col span={9}>
           <List>
-            {ITEMS.map(({ word, partOfSpeech, description, id }) => (
-              <ListItem
-                key={id}
-                title={word}
-                subTitle={partOfSpeech}
-                description={description}
-              />
-            ))}
+            {loading
+              ? PRELOADER_ITEMS.map(createPreloader)
+              : ITEMS.map(createItems)}
           </List>
         </Col>
       </Row>

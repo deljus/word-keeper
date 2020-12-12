@@ -2,21 +2,28 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 0 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    cursor: pointer;
+    align-items: flex-start;
 
-    --extra-width: 50px;
+    --extra-width: 120px;
 }
 
 .textContainer {
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     width: calc(100% - var(--extra-width));
     cursor: pointer;
+    height: 100%;
+    flex: 1;
+}
+
+.drag {
+    padding: 10px;
+    cursor: grab;
 }
 
 .title {
@@ -36,11 +43,16 @@
     text-overflow: ellipsis;
 }
 
+.description.open{
+    white-space: normal;
+}
+
 .extra {
     color: var(--border-color);
     display: flex;
     flex-direction: row;
     cursor: pointer;
+    padding: 10px;
 }
 
 .extra:hover,
