@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useState } from 'react';
 import cn from 'classnames';
-import { useTranslation } from 'react-i18next';
 import Icon from '../../Icon';
 import { ListItemProps } from './types';
 
 import styles from './listitem.module.css';
 
 const ListItem: FC<ListItemProps> = ({
+  id,
   title,
   subTitle,
   description,
@@ -17,10 +17,14 @@ const ListItem: FC<ListItemProps> = ({
   ...rest
 }) => {
   const [open, toggle] = useState(false);
-  const { t } = useTranslation();
   const handleDescriptionClick = useCallback(() => {
     toggle(!open);
   }, [open, toggle]);
+
+  const handleStarClick = useCallback(() => {
+    if (onSelect) onSelect(id, !selected);
+  }, []);
+
   return (
     <div className={styles.container} ref={innerRef} {...rest}>
       {draggable && (
@@ -43,14 +47,15 @@ const ListItem: FC<ListItemProps> = ({
         )}
       </div>
 
-      <div
-        data-for="star-tooltip"
-        data-tip={t('tooltips.star')}
-        data-delay-show={1000}
-        className={cn(styles.extra, { [styles.selected]: selected })}
-      >
-        {onSelect && <Icon type="star" />}
-      </div>
+      {onSelect && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+        <div
+          onClick={handleStarClick}
+          className={cn(styles.extra, { [styles.selected]: selected })}
+        >
+          <Icon type="star" />
+        </div>
+      )}
     </div>
   );
 };

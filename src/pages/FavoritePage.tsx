@@ -57,6 +57,7 @@ const IndexPage: FC = () => {
             items={ITEMS}
             renderItems={({ id, word, partOfSpeech, description }, prov) => (
               <ListItem
+                id={id}
                 key={id}
                 title={word}
                 subTitle={partOfSpeech}

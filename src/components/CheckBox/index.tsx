@@ -13,7 +13,7 @@ const CheckBox: FC<CheckBoxProps> = ({
 }) => {
   const handlerCheckBox = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
-      onCheck(id, target.checked);
+      onCheck(id, label, target.checked);
     },
     []
   );

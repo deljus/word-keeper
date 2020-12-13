@@ -35,10 +35,13 @@
   },
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "off",
     "no-use-before-define": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "react/jsx-props-no-spreading": 0,
     "import/prefer-default-export": 0,
+    "prefer-const": 0,
     "react/jsx-curly-newline": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "no-param-reassign": 0,

@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import CheckBox from '../../components/CheckBox';
 import SearchInput from '../../components/SearchInput';
+import { Groups } from '../../core/constants';
 import { SeachBarProps } from './types';
 
 import styles from './searchbar.module.css';
 
-const GROUPS = [
-  { id: '1', name: 'verb' },
-  { id: '2', name: 'adjective' },
-  { id: '3', name: 'noun' },
-];
+const GROUPS = Object.values(Groups).map((name, id) => ({
+  id: id.toString(),
+  name,
+}));
 
 const SearchBarContainer: FC<SeachBarProps> = ({
   search,
