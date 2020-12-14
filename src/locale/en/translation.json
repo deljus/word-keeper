@@ -6,7 +6,8 @@
   "search": {
     "placeholder": "Search..."
   },
-  "tooltips": {
-    "star": "Add to favourites"
+  "messages": {
+    "empty": "We did not find anything for your request.",
+    "error": "Something went wrong"
   }
 }

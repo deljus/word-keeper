@@ -15,7 +15,7 @@ const CheckBox: FC<CheckBoxProps> = ({
     ({ target }: ChangeEvent<HTMLInputElement>) => {
       onCheck(id, label, target.checked);
     },
-    []
+    [onCheck, id, label]
   );
 
   return (

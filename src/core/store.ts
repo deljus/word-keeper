@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from '@redux-saga/core';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { fetch, dictionaries } from './reducers';
 import { FetchState } from './reducers/fetch';

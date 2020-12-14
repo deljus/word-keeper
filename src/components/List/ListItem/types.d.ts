@@ -6,7 +6,7 @@ export interface ListItemProps {
   subTitle?: string | ReactNod;
   description?: string | ReactNod;
   selected?: boolean;
-  draggable?: boolean;
+  drag?: boolean;
   colorMark?: string;
   style?: any;
   innerRef?: RefAttributes;

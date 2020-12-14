@@ -9,11 +9,11 @@ const ListItem: FC<ListItemProps> = ({
   id,
   title,
   subTitle,
-  description,
+  drag,
   selected,
   onSelect,
-  draggable,
   innerRef,
+  description,
   ...rest
 }) => {
   const [open, toggle] = useState(false);
@@ -23,11 +23,11 @@ const ListItem: FC<ListItemProps> = ({
 
   const handleStarClick = useCallback(() => {
     if (onSelect) onSelect(id, !selected);
-  }, []);
+  }, [onSelect, selected, id]);
 
   return (
     <div className={styles.container} ref={innerRef} {...rest}>
-      {draggable && (
+      {drag && (
         <div className={styles.drag}>
           <Icon type="drugAndDrop" />
         </div>
@@ -53,7 +53,7 @@ const ListItem: FC<ListItemProps> = ({
           onClick={handleStarClick}
           className={cn(styles.extra, { [styles.selected]: selected })}
         >
-          <Icon type="star" />
+          <Icon type={selected ? 'fillStar' : 'star'} />
         </div>
       )}
     </div>

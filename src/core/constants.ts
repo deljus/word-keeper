@@ -11,13 +11,16 @@ export enum DictionaryConstant {
 
 export enum StarredWordsConstant {
   SET_ALL = 'STARRED_WORDS/SET_ALL',
-  ADD = 'STARRED_WORDS/ADD',
   MOVE = 'STARRED_WORDS/MOVE',
-  REMOVE = 'STARRED_WORDS/REMOVE',
 }
 
 export enum QueryConstant {
   QUERY = 'SAGAS/QUERY',
+}
+
+export enum AppConstant {
+  INIT_APP = 'SAGAS/INIT_APP',
+  LEAVE_APP = 'SAGAS/LEAVE_APP',
 }
 
 export enum Groups {

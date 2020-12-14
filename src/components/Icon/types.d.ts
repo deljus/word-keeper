@@ -11,6 +11,6 @@ export interface SizesType {
 
 export interface IconProps {
   size?: keyof SizesType;
-  type: 'search' | 'arrowDown' | 'drugAndDrop' | 'star' | 'close';
+  type: 'search' | 'arrowDown' | 'drugAndDrop' | 'star' | 'close' | 'fillStar' | 'emptyBox' | 'cry';
   className?: string;
 }

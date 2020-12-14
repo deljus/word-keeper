@@ -15,7 +15,7 @@
     padding: 10px;
     display: flex;
     flex-direction: row;
-    width: calc(100% - var(--extra-width));
+    min-width: calc(100% - var(--extra-width));
     cursor: pointer;
     height: 100%;
     flex: 1;
@@ -41,6 +41,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-right: 30px;
 }
 
 .description.open{

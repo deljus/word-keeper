@@ -16,9 +16,9 @@ const DraggableList: FC<DragListProps> = ({
 }) => {
   const onDragEnd = (result: DropResult): void => {
     const { source, destination } = result;
-    if (!destination || !onMoveItems) return;
+    if (!destination || !onMoveItems || !items) return;
 
-    onMoveItems(source.index, destination.index);
+    onMoveItems(items[source.index], items[destination.index]);
   };
 
   return (
@@ -30,7 +30,8 @@ const DraggableList: FC<DragListProps> = ({
             ref={provided.innerRef}
             className="draggable-list"
           >
-            {items && items.length ? (
+            {items &&
+              items.length &&
               items.map((item: any, index: number) => (
                 <Draggable
                   draggableId={index.toString()}
@@ -41,10 +42,8 @@ const DraggableList: FC<DragListProps> = ({
                     renderItems(item, prov)
                   }
                 </Draggable>
-              ))
-            ) : (
-              <div className="info-text">No items</div>
-            )}
+              ))}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>

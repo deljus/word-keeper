@@ -1,33 +1,34 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
-import { QueryConstant } from './constants';
+import { put, call, takeEvery, select } from '@redux-saga/core/effects';
+import { Saga, SagaIterator } from '@redux-saga/core';
+import { QueryConstant, AppConstant } from './constants';
 import { QueryAction } from './actions/sagas';
 import {
   fetchStartAction,
   fetchEndAction,
   fetchErrorAction,
 } from './actions/fetch';
-import { dictionarySetAllAction, DictionaryData } from './actions/dictionaries';
-import { request, HttpResponse } from '../util/request';
-import { serializeResponse, RequestData } from '../util/serrializeResponse';
+import {
+  dictionarySetAllAction,
+  starredWordsSetAllAction,
+} from './actions/dictionaries';
+import { request } from '../util/request';
+import { serializeResponse } from '../util/serrializeResponse';
 
-export function* startFetch({ search, groups }: QueryAction): Generator {
+export function* startFetch({ search }: QueryAction): SagaIterator {
+  if (!search) {
+    yield put(dictionarySetAllAction([]));
+    return;
+  }
+
   yield put(fetchStartAction());
+
   try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const response: HttpResponse<RequestData[]> = yield call(
+    const response = yield call(
       request,
       `https://api.datamuse.com/words?sp=${search}*&md=d&max=20`
     );
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const data: DictionaryData[] = yield call(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      serializeResponse,
-      response.parsedBody
-    );
+    const data = yield call(serializeResponse, response.parsedBody);
 
     yield put(dictionarySetAllAction(data));
     yield put(fetchEndAction());
@@ -36,6 +37,20 @@ export function* startFetch({ search, groups }: QueryAction): Generator {
   }
 }
 
+function* initApp() {
+  const savedStarredWords = localStorage.getItem('starredWords');
+  if (savedStarredWords) {
+    yield put(starredWordsSetAllAction(JSON.parse(savedStarredWords)));
+  }
+}
+
+function* leaveApp() {
+  const starredWords = yield select((state) => state.dictionaries.starredWords);
+  yield localStorage.setItem('starredWords', JSON.stringify(starredWords));
+}
+
 export function* sagas() {
   yield takeEvery(QueryConstant.QUERY, startFetch);
+  yield takeEvery(AppConstant.INIT_APP, initApp);
+  yield takeEvery(AppConstant.LEAVE_APP, leaveApp);
 }

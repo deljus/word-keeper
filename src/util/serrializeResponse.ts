@@ -10,7 +10,7 @@ interface SerrializeData {
   id: string;
   word: string;
   partsOfSpeech: string;
-  description: string[];
+  description: string;
   selected: boolean;
 }
 
@@ -36,26 +36,25 @@ export const serializeResponse = (rData: RequestData[]): SerrializeData[] => {
         id: uniqKey,
         word,
         partsOfSpeech: Groups[group],
-        description: [],
+        description: '',
         selected: false,
       };
 
       if (!defs) return;
       defs.forEach((description: string) => {
         if (description.startsWith(RequestGroups[group])) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          buf.description.push(description.slice(RequestGroups[group].length));
+          buf.description = buf.description.concat(
+            description.slice(RequestGroups[group].length),
+            ';'
+          );
         }
       });
 
-      if (buf.description.length) {
+      if (buf.description) {
         serrializeData.push(buf);
       }
     });
   });
-
-  console.log(serrializeData);
 
   return serrializeData;
 };

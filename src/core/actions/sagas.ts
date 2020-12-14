@@ -1,4 +1,4 @@
-import { QueryConstant } from '../constants';
+import { QueryConstant, AppConstant } from '../constants';
 
 export interface QueryParams {
   search?: string;
@@ -13,4 +13,20 @@ export const queryAction = ({ search, groups }: QueryParams): QueryAction => ({
   type: QueryConstant.QUERY,
   search,
   groups,
+});
+
+export interface InitAppAction {
+  type: AppConstant.INIT_APP;
+}
+
+export interface LeaveAppAction {
+  type: AppConstant.LEAVE_APP;
+}
+
+export const initAppAction = (): InitAppAction => ({
+  type: AppConstant.INIT_APP,
+});
+
+export const leaveAppAction = (): LeaveAppAction => ({
+  type: AppConstant.LEAVE_APP,
 });
