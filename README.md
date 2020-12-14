@@ -1,3 +1,5 @@
+:rocket::rocket::rocket:
+
 To start a project, please download or clone a project and install the dependencies:
 
 ### `yarn`
